@@ -1,0 +1,11 @@
+<mvc:View
+    controllerName="bookmanager.controller.App"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <!-- NavContainer -->
+    <App id="app">
+        <!-- Der Router wird später hier die Seiten einfügen -->
+    </App>
+</mvc:View>

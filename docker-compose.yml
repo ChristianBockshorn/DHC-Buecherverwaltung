@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    # Code live in den Container mounten (Hot-Reload möglich)
+    volumes:
+      - ./backend:/app
+    # Für Hot-Reload (optional) unten die command-Zeile aktivieren:
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    # Source-Mount + separates node_modules-Volume (sonst wird es überdeckt)
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend

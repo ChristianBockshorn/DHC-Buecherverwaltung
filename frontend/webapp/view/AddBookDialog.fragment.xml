@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+
+   <Dialog
+      id="addDialog"
+      title="Neues Buch"
+      draggable="false"
+      resizable="false"
+      contentWidth="30rem"
+      contentHeight="20rem">
+
+      <VBox class="sapUiSmallMargin">
+
+         <Label text="Titel" required="true" />
+         <Input value="{new>/title}" placeholder="Titel eingeben" />
+
+         <Label text="Autor" required="true" />
+         <Input value="{new>/author}" placeholder="Autor eingeben" />
+
+         <Label text="Angelegt am" />
+         <DatePicker
+            displayFormat="yyyy-MM-dd"
+            valueFormat="yyyy-MM-dd"
+            value="{new>/created}" />
+
+         <Label text="Angelegt von" />
+         <Input value="{new>/creator}" placeholder="Dein Name" />
+      </VBox>
+
+      <beginButton>
+         <Button text="Speichern" type="Emphasized" press=".onSaveNew" />
+      </beginButton>
+
+      <endButton>
+         <Button text="Abbrechen" press=".onCancelNew" />
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,18 @@
+{
+  "generator-ui5-app": {
+    "namespace": "bookmanager",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.138.0",
+    "author": "ChristianBockshorn",
+    "initrepo": false,
+    "appId": "bookmanager",
+    "appURI": "bookmanager",
+    "cdnDomain": "sdk.openui5.org",
+    "defaultTheme": "sap_horizon",
+    "qunitCoverageFile": "qunit-coverage-istanbul.js",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "lt1_124_0": false,
+    "setupCompleted": true
+  }
+}

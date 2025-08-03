@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+   <Dialog id="editDialog" title="Buch bearbeiten" draggable="false"
+      resizable="false"
+      contentWidth="30rem"
+      contentHeight="20rem">
+      <VBox class="sapUiSmallMargin">
+         <Label text="Titel" required="true" />
+         <Input value="{edit>/title}" placeholder="Titel" />
+
+         <Label text="Autor" required="true" />
+         <Input value="{edit>/author}" placeholder="Autor" />
+
+         <Label text="Angelegt am" />
+         <DatePicker
+            displayFormat="yyyy-MM-dd"
+            valueFormat="yyyy-MM-dd"
+            value="{edit>/created}" />
+
+         <Label text="Angelegt von" />
+         <Input value="{edit>/creator}" placeholder="Name" />
+      </VBox>
+
+      <beginButton>
+         <Button text="Speichern" type="Emphasized" press=".onSaveEdit" />
+      </beginButton>
+      <endButton>
+         <Button text="Abbrechen" press=".onCancelEdit" />
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

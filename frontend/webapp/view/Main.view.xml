@@ -1,0 +1,104 @@
+<mvc:View
+   controllerName="bookmanager.controller.Main"
+   displayBlock="true"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:core="sap.ui.core"
+   core:require="{ fmt: 'bookmanager/model/formatter' }">
+
+   <Page title="Bücherverwaltung" id="pageBooks">
+
+      <!-- Filterleiste oben, fix -->
+      <subHeader>
+         <Toolbar>
+            <SearchField
+               id="search" width="18rem"
+               placeholder="Suche Titel / Autor"
+               liveChange=".onFilter" search=".onFilter" />
+
+            <DateRangeSelection
+               id="drs"
+               width="18rem"
+               delimiter=" bis "
+               valueFormat="yyyy-MM-dd"
+               displayFormat="dd.MM.yyyy"
+               change=".onFilter" />
+
+            <ToolbarSpacer />
+            <Button icon="sap-icon://refresh" tooltip="Aktualisieren" press=".onRefresh" />
+         </Toolbar>
+      </subHeader>
+
+      <content>
+
+         <!-- Responsive Table mit Actions in der Header-Toolbar -->
+         <Table
+            id="tblBooks"
+            mode="SingleSelectMaster"
+            items="{books>/items}"
+            noDataText="Keine Bücher gefunden"
+            sticky="ColumnHeaders"
+            growing="false"
+            growingScrollToLoad="true"
+            growingThreshold="25"
+            busyIndicatorDelay="0">
+
+
+            <headerToolbar>
+               <OverflowToolbar>
+                  <Title text="Bücher" level="H3" />
+                  <Button icon="sap-icon://download" text="CSV" press=".onExport" />
+
+                  <ToolbarSpacer />
+                  <Button text="Neu" icon="sap-icon://add" type="Emphasized" press=".onAdd" />
+                  <Button icon="sap-icon://sort" text="Sortieren" press=".onSort" />
+                  <Button text="Bearbeiten" icon="sap-icon://edit" press=".onEdit" />
+                  <Button text="Löschen" icon="sap-icon://delete" press=".onDelete" />
+               </OverflowToolbar>
+            </headerToolbar>
+
+            <!-- Spalten – mit Popin für kleine Screens -->
+            <columns>
+               <Column width="6rem" demandPopin="true" minScreenWidth="Desktop">
+                  <Text text="ID" />
+               </Column>
+               <Column width="18rem">
+                  <Text text="Titel" />
+               </Column>
+               <Column width="14rem" demandPopin="true" minScreenWidth="Tablet">
+                  <Text text="Autor" />
+               </Column>
+               <Column width="12rem" hAlign="End" demandPopin="true" minScreenWidth="Tablet">
+                  <Text text="Angelegt am" />
+               </Column>
+               <Column width="12rem" demandPopin="true" minScreenWidth="Desktop">
+                  <Text text="Angelegt von" />
+               </Column>
+            </columns>
+
+            <items>
+               <ColumnListItem>
+                  <cells>
+                     <ObjectNumber number="{books>id}" />
+                     <ObjectIdentifier title="{books>title}" />
+                     <Text text="{books>author}" />
+                     <Text text="{ path: 'books>created', formatter: 'fmt.dateYMDToDMY' }" />
+                     <ObjectStatus text="{books>creator}" state="Information" />
+                  </cells>
+               </ColumnListItem>
+            </items>
+         </Table>
+
+         <Toolbar id="pagerBar">
+            <Button id="btnPrev" icon="sap-icon://nav-back" text="Zurück" press=".onPagePrev" />
+            <ToolbarSpacer />
+            <Text id="pageInfo"
+               text="Seite {books>/page} / {books>/totalPages}  ·  {books>/total} Treffer" />
+            <ToolbarSpacer />
+            <Button id="btnNext" icon="sap-icon://nav-forward" text="Weiter" press=".onPageNext" />
+         </Toolbar>
+
+
+      </content>
+   </Page>
+</mvc:View>

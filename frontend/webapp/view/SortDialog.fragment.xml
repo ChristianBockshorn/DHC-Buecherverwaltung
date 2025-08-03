@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <ViewSettingsDialog confirm=".onSortConfirm">
+    <sortItems>
+      <ViewSettingsItem key="title"   text="Titel"/>
+      <ViewSettingsItem key="author"  text="Autor"/>
+      <ViewSettingsItem key="created" text="Angelegt am"/>
+      <ViewSettingsItem key="creator" text="Angelegt von"/>
+    </sortItems>
+  </ViewSettingsDialog>
+</core:FragmentDefinition>
