@@ -11,9 +11,9 @@ Full‑Stack Demo zur Verwaltung einer Bücherliste. Frontend in **OpenUI5** (Di
 * Bücherliste (ID, Titel, Autor, **Angelegt am**, **Angelegt von**)
 * Anlegen / Bearbeiten / Löschen (Dialoge, Confirm bei Delete)
 * Suche (`q` über Titel/Autor/Creator) + Datumsfilter (`created_from`, `created_to`)
-* Sortieren (clientseitig über ViewSettings), CSV‑Export
-* Paginierung: **20 Einträge pro Seite** (clientseitig; serverseitig vorbereitbar)
-* Busy‑Handling für Requests
+* Sortieren 
+* CSV‑Export
+* **20 Einträge pro Seite**
 * Seed‑Daten beim ersten Start
 * Docker Compose: Frontend & Backend in Containern, SQLite als Datei
 
