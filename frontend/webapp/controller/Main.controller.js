@@ -183,17 +183,46 @@ sap.ui.define([
 
       /* ---------- Export als CSV ---------- */
       onExport: function () {
-         const data = this._books().getData() || [];
+         // 1) Zeilenquelle bestimmen
+         // Falls Pagination aktiv ist, liegt alles gefilterte in _dataAll
+         let rows = Array.isArray(this._dataAll) ? this._dataAll : null;
+
+         // Fallback: aus dem Model holen (unterstützt beide Formen: Array ODER {items,...})
+         if (!rows) {
+            const m = this.getOwnerComponent().getModel("books");
+            const data = m.getData();
+            if (Array.isArray(data)) {
+               rows = data;
+            } else if (data && Array.isArray(data.items)) {
+               rows = data.items;
+            } else {
+               rows = [];
+            }
+         }
+
+         if (!rows.length) {
+            sap.m.MessageToast.show("Keine Daten zum Exportieren");
+            return;
+         }
+
+         // 2) CSV bauen
          const cols = ["id", "title", "author", "created", "creator"];
          const esc = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
-         const csv = [cols.join(",")].concat(data.map(r => cols.map(k => esc(r[k])).join(","))).join("\r\n");
 
+         const header = cols.join(",");
+         const lines = rows.map(r => cols.map(k => esc(r[k])).join(","));
+         const csv = [header].concat(lines).join("\r\n");
+
+         // 3) Download auslösen
          const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
          const url = URL.createObjectURL(blob);
          const a = document.createElement("a");
-         a.href = url; a.download = "books.csv"; a.click();
+         a.href = url;
+         a.download = "books.csv";
+         a.click();
          URL.revokeObjectURL(url);
       },
+
 
 
 
