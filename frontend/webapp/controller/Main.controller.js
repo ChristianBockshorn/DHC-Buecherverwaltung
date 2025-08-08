@@ -248,6 +248,13 @@ sap.ui.define([
       // Edit-Dialog schließen
       onSaveEdit: function () {
          const oData = this.getView().getModel("edit").getData();
+
+         // Minimale Validierung
+         if (!oData.title || !oData.author) {
+            MessageToast.show("Titel und Autor sind Pflichtfelder");
+            return;
+         }
+
          fetch(API + "/books/" + oData.id, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
