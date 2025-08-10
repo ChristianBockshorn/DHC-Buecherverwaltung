@@ -1,6 +1,6 @@
 [build]
-  command = ""
-  publish = "book-manager/frontend/webapp"
+  command = ""            # kein Build für OpenUI5
+  publish = "webapp"      # relativ zum Base-Directory
 
 [[redirects]]
   from = "/api/*"
