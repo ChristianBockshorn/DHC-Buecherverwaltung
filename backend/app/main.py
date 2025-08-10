@@ -34,7 +34,13 @@ custom_domain = os.getenv(
 app.add_middleware(
     CORSMiddleware,
     # exakt deine Prod-Domain:
-    allow_origins=["https://buechermanagement.christian-bockshorn.de"],
+    allow_origins=[
+        "https://buechermanagement.christian-bockshorn.de",
+        "https://buechermanagement.netlify.app",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
+    ],
+
     # zusätzlich alle *.netlify.app erlauben (falls du mal die Netlify-URL nutzt)
     allow_origin_regex=r"^https://.*\.netlify\.app$",
     allow_credentials=True,
