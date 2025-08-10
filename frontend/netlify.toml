@@ -1,0 +1,12 @@
+# book-manager/frontend/netlify.toml
+[build]
+  # Kein Build: direkt webapp deployen
+  command = ""
+  publish = "webapp"
+
+# API-Proxy -> dein Render-Backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://dhc-buecherverwaltung.onrender.com/:splat"
+  status = 200
+  force = true
