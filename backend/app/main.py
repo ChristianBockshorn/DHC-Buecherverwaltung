@@ -20,9 +20,10 @@ with SessionLocal() as s:
 
 app = FastAPI(title="Books API")
 origins = [
-    "https://buechermanagement.christian-bockshorn.de",
-    "http://localhost:8080",
-    "http://127.0.0.1:8080"
+    "http://localhost:8080",   # Lokale UI5-Entwicklung
+    "http://127.0.0.1:8080",
+    "https://buechermanagement.christian-bockshorn.de",  # Prod
+    "https://buechermanagement.netlify.app" 
 ]
 # Produktions-Origins (Netlify + deine Custom-Domain)
 # Setz hier DEINE echte Netlify-URL rein, falls du sie weißt.

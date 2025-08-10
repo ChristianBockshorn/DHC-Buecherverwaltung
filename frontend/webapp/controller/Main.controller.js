@@ -8,7 +8,8 @@ sap.ui.define([
 ], function (BaseController, JSONModel, Fragment, Sorter, MessageToast, MessageBox) {
    "use strict";
 
-   const API = window.API_URL || "https://dhc-buecherverwaltung.onrender.com/";
+   const API = window.API_URL || "http://localhost:8000";
+
 
    return BaseController.extend("bookmanager.controller.Main", {
       onInit: function () {
