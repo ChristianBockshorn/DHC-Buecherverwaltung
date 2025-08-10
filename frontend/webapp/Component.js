@@ -6,7 +6,7 @@ sap.ui.define([
 ], function (UIComponent, Device, models, JSONModel) {
    "use strict";
 
-   const BASE_URL = "http://localhost:8000";       // Backend-Basis-URL
+   const BASE_URL = (window.API_URL || "/api");
 
    return UIComponent.extend("bookmanager.Component", {
       metadata: {
@@ -30,7 +30,7 @@ sap.ui.define([
          this.getRouter().initialize();
       },
 
-      
+
       getContentDensityClass: function () {
          if (this.contentDensityClass === undefined) {
             if (document.body.classList.contains("sapUiSizeCozy") ||
