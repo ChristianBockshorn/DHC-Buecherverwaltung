@@ -8,7 +8,7 @@ sap.ui.define([
 ], function (BaseController, JSONModel, Fragment, Sorter, MessageToast, MessageBox) {
    "use strict";
 
-   const API = "http://localhost:8000";
+   const API = (window.API_BASE || "/api");
 
    return BaseController.extend("bookmanager.controller.Main", {
       onInit: function () {

@@ -20,12 +20,23 @@ with SessionLocal() as s:
 
 app = FastAPI(title="Books API")
 origins = [
-    "http://localhost:8080",   # UI5-Dev-Server
+    "https://buechermanagement.christian-bockshorn.de",
+    "http://localhost:8080",
     "http://127.0.0.1:8080"
 ]
+# Produktions-Origins (Netlify + deine Custom-Domain)
+# Setz hier DEINE echte Netlify-URL rein, falls du sie weißt.
+netlify_site = os.getenv(
+    "NETLIFY_ORIGIN", "https://<deine-netlify-site>.netlify.app")
+custom_domain = os.getenv(
+    "CUSTOM_ORIGIN", "https://dhc.christian-bockshorn.de")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    # exakt deine Prod-Domain:
+    allow_origins=["https://buechermanagement.christian-bockshorn.de"],
+    # zusätzlich alle *.netlify.app erlauben (falls du mal die Netlify-URL nutzt)
+    allow_origin_regex=r"^https://.*\.netlify\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
