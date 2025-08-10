@@ -16,7 +16,7 @@ from .seed import run as seed_db
 Base.metadata.create_all(bind=engine)
 
 with SessionLocal() as s:
-    seed_db(s)
+    seed_db(s, force=True)
 
 app = FastAPI(title="Books API")
 origins = [
