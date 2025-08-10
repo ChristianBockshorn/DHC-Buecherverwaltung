@@ -270,7 +270,7 @@ sap.ui.define([
 
       /* ------------ Filter ------------ */
       _applyFilter: function () {
-         const API = "http://localhost:8000";
+         const API = window.API_URL;
          const q = this.byId("search").getValue().trim();
          const drs = this.byId("drs");
          const from = drs.getDateValue();
