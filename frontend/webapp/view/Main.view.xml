@@ -83,7 +83,7 @@
                      <ObjectIdentifier title="{books>title}" />
                      <Text text="{books>author}" />
                      <Text text="{ path: 'books>created', formatter: 'fmt.dateYMDToDMY' }" />
-                     <ObjectStatus text="{books>creator}" state="Information" />
+                     <ObjectStatus text="{books>creator}"  />
                   </cells>
                </ColumnListItem>
             </items>
